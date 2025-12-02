@@ -1,6 +1,6 @@
 package com.test.authx.utils;
 
-import com.test.authx.domain.User;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -10,26 +10,48 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 @Component
 public class JwtUtil {
-
+    /**
+     * 初始化生成JWT令牌
+     * @param user
+     * @return
+     */
     public String InitJwt(UserDetails user) {
         String key = "ZG9uZ3h1ZXFpbnF3ZXJ0eXVpb3Bsa2poZ2Zkc2F6eGN2Ym5t";
         long expiration = System.currentTimeMillis() + 3600 * 1000;
          return Jwts.builder()
-                .setSubject(user.getUsername()) // Token 中存储用户名（主题）
+                .setSubject(user.getUsername()) // Token 中存储用户名
                 .setIssuedAt(new Date()) // 签发时间
                 .setExpiration(new Date(System.currentTimeMillis() + expiration)) // 过期时间
-                .signWith(SignatureAlgorithm.HS256,key) // 用密钥签名（防篡改）
+                .signWith(SignatureAlgorithm.HS256,key)
                 .compact();
     }
 
-    public boolean validateJwt(String token, UserDetails user) {
-        String username = extractUsername(token);
+    /**
+     * 认证jwt
+     * @param token
+     * @param user
+     * @return
+     */
+    public boolean AuthJwt(String token, UserDetails user) {
+        String username = takeUsername(token);
         return username.equals(user.getUsername()) && !isTokenExpire(token);
     }
-    public String extractUsername(String token) {
-        return extractClaims(token).getSubject();
+
+    /**
+     * 获取姓名
+     * @param token
+     * @return
+     */
+    public String takeUsername(String token) {
+        return takeClaims(token).getSubject();
     }
-    private Claims extractClaims(String token) {
+
+    /**
+     * 获取声明
+     * @param token
+     * @return
+     */
+    private Claims takeClaims(String token) {
         String key = "ZG9uZ3h1ZXFpbnF3ZXJ0eXVpb3Bsa2poZ2Zkc2F6eGN2Ym5t";
         return  Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -37,7 +59,13 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+    /**
+     * 是否过期
+     * @param token
+     * @return
+     */
     private boolean isTokenExpire(String token) {
-        return extractClaims(token).getExpiration().before(new Date());
+        return takeClaims(token).getExpiration().before(new Date());
     }
 }

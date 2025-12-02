@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>极简登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ddd; border-radius: 4px; }
+        #loginBtn { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        #loginBtn:hover { background: #0056b3; }
+        .success { color: green; margin-top: 10px; text-align: center; }
+        .error { color: red; margin-top: 10px; text-align: center; }
+        .url-tip { margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px; font-size: 14px; }
+        .url-link { color: #007bff; text-decoration: underline; cursor: pointer; }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+<body>
+<h2 style="text-align: center;">系统登录</h2>
+
+<div class="form-group">
+    <label for="username">用户名</label>
+    <input type="text" id="username" placeholder="输入用户名" required>
+</div>
+
+<div class="form-group">
+    <label for="password">密码</label>
+    <input type="password" id="password" placeholder="输入密码" required>
+</div>
+
+<button id="loginBtn">登录</button>
+
+<div id="successMsg" class="success"></div>
+<div id="errorMsg" class="error"></div>
+
+<!-- 登录成功后显示带 Token 的 URL -->
+<div id="urlContainer" class="url-tip" style="display: none;">
+    手动访问链接（已含 Token）：<br>
+    <span id="helloUrl" class="url-link"></span><br>
+    <small>复制上面链接到地址栏，或点击直接访问</small>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // 拦截器：Axios 请求自动携带 Token（按钮访问用）
+        axios.interceptors.request.use(
+            function(config) {
+                if (config.url !== '/login') {
+                    const token = localStorage.getItem('token');
+                    if (token) {
+                        config.headers.Authorization = 'Bearer ' + token;
+                    }
+                }
+                return config;
+            },
+            function(error) {
+                return Promise.reject(error);
+            }
+        );
+
+        $('#loginBtn').click(function() {
+            const username = $('#username').val().trim();
+            const password = $('#password').val().trim();
+
+            if (!username) {
+                $('#errorMsg').text('请输入用户名');
+                return;
+            }
+            if (!password) {
+                $('#errorMsg').text('请输入密码');
+                return;
+            }
+
+            axios.post('/login', { username: username, password: password })
+                .then(function(res) {
+                    const data = res.data;
+                    console.log("后端返回：", data);
+
+                    if (data.success || data.code === 200 || data.code === 0) {
+                        const token = data.token || (data.data && data.data.token);
+                        if (token) {
+                            localStorage.setItem('token', token);
+                            $('#successMsg').text('登录成功！');
+                            $('#errorMsg').text('');
+
+                            // 🔥 拼接带 Token 的 URL（?token=xxx）
+                            const helloUrl = window.location.origin + '/hello?token=' + token;
+                            $('#helloUrl').text(helloUrl);
+                            $('#urlContainer').show(); // 显示带 Token 的链接
+
+                            // 点击链接直接访问
+                            $('#helloUrl').click(function() {
+                                window.open(helloUrl, '_self');
+                            });
+                        } else {
+                            $('#errorMsg').text('登录失败：未获取到 Token');
+                        }
+                    } else {
+                        $('#errorMsg').text(data.msg || '登录失败');
+                    }
+                })
+                .catch(function(error) {
+                    console.error("登录请求错误：", error);
+                    if (error.response && error.response.status === 403) {
+                        $('#errorMsg').text('登录被拒绝（403），请检查后端 CSRF 配置');
+                    } else {
+                        $('#errorMsg').text('登录失败，请重试');
+                    }
+                });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@localhost">
+<dataSource name="Authx@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.53">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -996,8 +996,9 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </collation>
     <schema id="288" parent="1" name="authx">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
+      <Current>1</Current>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-12-01.14:13:30</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-12-02.09:30:24</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="cqwaimai">
@@ -1076,17 +1077,23 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="309" parent="306" name="create_time">
+    <column id="309" parent="306" name="status">
+      <Comment>状态：1-正常，0-禁用</Comment>
+      <DefaultExpression>1</DefaultExpression>
+      <Position>3</Position>
+      <StoredType>tinyint|0s</StoredType>
+    </column>
+    <column id="310" parent="306" name="create_time">
       <Comment>创建时间</Comment>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <Position>3</Position>
+      <Position>4</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="310" parent="306" name="update_time">
+    <column id="311" parent="306" name="update_time">
       <Comment>更新时间</Comment>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
-      <Position>4</Position>
+      <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
   </database-model>
