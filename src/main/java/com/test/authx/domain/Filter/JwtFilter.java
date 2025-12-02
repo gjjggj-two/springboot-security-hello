@@ -1,6 +1,7 @@
 package com.test.authx.domain.Filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.authx.domain.Result;
 import com.test.authx.utils.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -56,9 +57,8 @@ public class JwtFilter extends OncePerRequestFilter {
             } catch (Exception e) {
                 response.setContentType("application/json;charset=UTF-8");
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write(objectMapper.writeValueAsString(
-                        Map.of("code", 401, "msg", "Token 无效或已过期")
-                ));
+                Result<Void> result = Result.fail("Token 校验失败");
+                response.getWriter().write(objectMapper.writeValueAsString(result));
                 return;
             }
         }
@@ -77,9 +77,8 @@ public class JwtFilter extends OncePerRequestFilter {
             } catch (Exception e) {
                 response.setContentType("application/json;charset=UTF-8");
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write(objectMapper.writeValueAsString(
-                        Map.of("code", 401, "msg", "URL中的Token无效或已过期")
-                ));
+                Result<Void> result = Result.fail("Token 校验失败");
+                response.getWriter().write(objectMapper.writeValueAsString(result));
                 return;
             }
         }
@@ -88,9 +87,8 @@ public class JwtFilter extends OncePerRequestFilter {
         if (username == null) {
             response.setContentType("application/json;charset=UTF-8");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write(objectMapper.writeValueAsString(
-                    Map.of("code", 401, "msg", "请先登录获取 Token")
-            ));
+            Result<Void> result = Result.fail("Token 校验失败");
+            response.getWriter().write(objectMapper.writeValueAsString(result));
             return;
         }
 
@@ -108,9 +106,8 @@ public class JwtFilter extends OncePerRequestFilter {
             } else {
                 response.setContentType("application/json;charset=UTF-8");
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write(objectMapper.writeValueAsString(
-                        Map.of("code", 401, "msg", "Token 校验失败")
-                ));
+                Result<Void> result = Result.fail("Token 校验失败");
+                response.getWriter().write(objectMapper.writeValueAsString(result));
                 return;
             }
         }

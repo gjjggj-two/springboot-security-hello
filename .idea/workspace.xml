@@ -5,36 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="289af064-01c7-4abc-93de-c5b0a3377e9f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/domain/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8750af23-4c0a-4435-8f9d-40ae940ffd0c.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8750af23-4c0a-4435-8f9d-40ae940ffd0c/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8750af23-4c0a-4435-8f9d-40ae940ffd0c/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8750af23-4c0a-4435-8f9d-40ae940ffd0c/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8750af23-4c0a-4435-8f9d-40ae940ffd0c/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/controller/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/domain/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/domain/Filter/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/service/impl/impl/UserDetailsServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/service/impl/UserDetailsServiceimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/authx/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/authx/utils/JwtUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/authx/config/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/controller/LoginController$LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/authx/controller/LoginController$LoginRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/authx/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/domain/JwtFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/authx/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/service/impl/impl/UserDetailsServiceimpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/test/authx/utils/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/authx/utils/JwtUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +131,7 @@
       <workItem from="1764651204313" duration="928000" />
       <workItem from="1764652151258" duration="106000" />
       <workItem from="1764652269912" duration="8704000" />
-      <workItem from="1764667769172" duration="6331000" />
+      <workItem from="1764667769172" duration="8042000" />
     </task>
     <servers />
   </component>

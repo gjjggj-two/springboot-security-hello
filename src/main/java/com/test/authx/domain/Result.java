@@ -14,6 +14,7 @@ public class Result<T> {
         result.setData(data);
         return result;
     }
+
     public static <T> Result<T> fail(String msg) {
         Result<T> result = new Result<T>();
         result.setCode(401);

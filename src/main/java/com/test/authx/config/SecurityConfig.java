@@ -2,7 +2,7 @@ package com.test.authx.config;
 
 
 import com.test.authx.domain.Filter.JwtFilter;
-import com.test.authx.utils.JwtUtil;
+
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,7 +60,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         // 放行登录页面和登录接口
-                        .requestMatchers("/login", "/login-process").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated()
                 )
 

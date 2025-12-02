@@ -29,16 +29,12 @@ public class LoginController {
 
     @GetMapping("/login")
     public ResponseEntity<ClassPathResource> showLoginPage() {
-        System.out.println("LoginController 正在处理 GET /login 请求，返回 login.html");
         ClassPathResource resource = new ClassPathResource("static/login.html");
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_TYPE, "text/html;charset=UTF-8");
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 
-    /**
-     * POST /login：处理登录提交（接收账号密码，生成 Token）
-     */
 
     @PostMapping("/login")
     public Result<Map<String, String>> doLogin(@RequestBody LoginRequest loginRequest) {
